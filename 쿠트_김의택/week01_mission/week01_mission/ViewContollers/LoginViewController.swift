@@ -8,12 +8,32 @@
 import UIKit
 
 class LoginViewController: UIViewController {
-
+    
+    private lazy var loginView: LoginView = {
+        let view = LoginView()
+        return view
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .red
+        self.view = loginView
+        
     }
-
-
 }
 
+
+
+
+
+
+
+
+#if DEBUG
+    import SwiftUI
+    
+    struct VCPreView: PreviewProvider {
+        static var previews: some View {
+            LoginViewController().toPreview()
+        }
+    }
+#endif
