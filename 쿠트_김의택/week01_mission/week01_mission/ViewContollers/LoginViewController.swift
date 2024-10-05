@@ -11,6 +11,7 @@ class LoginViewController: UIViewController {
     
     private lazy var loginView: LoginView = {
         let view = LoginView()
+        view.loginButton.addTarget(self, action: #selector (loginTapped), for: .touchUpInside)
         return view
     }()
     
@@ -18,6 +19,16 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         self.view = loginView
         
+    }
+    
+    @objc
+    private func loginTapped() {
+        let viewController = BaseViewController()
+        
+        viewController.view.backgroundColor = .white
+        viewController.modalPresentationStyle = .fullScreen
+        
+        present(viewController, animated: true)
     }
 }
 
@@ -33,7 +44,7 @@ class LoginViewController: UIViewController {
     
     struct VCPreView: PreviewProvider {
         static var previews: some View {
-            LoginViewController().toPreview()
+            BaseViewController().toPreview()
         }
     }
 #endif

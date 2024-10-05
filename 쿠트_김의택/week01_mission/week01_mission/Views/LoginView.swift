@@ -102,6 +102,7 @@ class LoginView: UIView {
         button.backgroundColor = .lightGray
         button.layer.cornerRadius = 8
         button.translatesAutoresizingMaskIntoConstraints = false
+        
         return button
     }()
     
@@ -213,6 +214,8 @@ class LoginView: UIView {
             
         ])
     }
+    
+    
     
     
     

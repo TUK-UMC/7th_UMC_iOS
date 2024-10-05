@@ -41,7 +41,7 @@ class NavigationViewController: UIViewController {
     private func buttonDidTap() {
         let viewController = UIViewController()
         
-        viewController.view.backgroundColor = .systemBlue
+        viewController.view.backgroundColor = .white
         
         navigationController?.pushViewController(viewController, animated: true)
         
