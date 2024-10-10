@@ -84,15 +84,15 @@ class LoginView: UIView {
     }()
     
     let loginButton: UIButton = {
-            let button = UIButton(type: .system)
-            button.setTitle("로그인", for: .normal)
-            button.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .medium)
-            button.backgroundColor = UIColor.lightGray
-            button.tintColor = .white
-            button.layer.cornerRadius = 8
-            button.translatesAutoresizingMaskIntoConstraints = false
-            return button
-        }()
+        let button = UIButton(type: .system)
+        button.setTitle("로그인", for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .medium)
+        button.backgroundColor = UIColor.lightGray
+        button.tintColor = .white
+        button.layer.cornerRadius = 8
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -116,7 +116,7 @@ class LoginView: UIView {
         addSubview(passwordTextField)
         addSubview(loginButton)
     }
-    
+
     private func setupConstraints() {
         NSLayoutConstraint.activate([
             logoLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 60),
