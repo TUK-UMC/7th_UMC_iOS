@@ -8,6 +8,7 @@
 import UIKit
 
 class ProfileSettingView: UIView {
+    private let userDefaults = LoginModel()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -101,10 +102,11 @@ class ProfileSettingView: UIView {
     public lazy var idField: UITextField = {
         let field = UITextField()
         
-        field.placeholder = "새로운 이메일을 입력해주세요"
+        field.text = userDefaults.loadUserID()
         field.layer.borderColor = UIColor.gray.cgColor
         field.layer.borderWidth = 1
         field.layer.cornerRadius = 10
+        field.isUserInteractionEnabled = false
         field.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: frame.height))
         field.leftViewMode = .always
         
@@ -116,10 +118,11 @@ class ProfileSettingView: UIView {
     public lazy var pwField: UITextField = {
         let field = UITextField()
         
-        field.placeholder = "새로운 비밀번호를 입력해주세요"
+        field.text = userDefaults.loadUserPW()
         field.layer.borderColor = UIColor.gray.cgColor
         field.layer.borderWidth = 1
         field.layer.cornerRadius = 10
+        field.isUserInteractionEnabled = false
         field.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: frame.height))
         field.leftViewMode = .always
         

@@ -9,14 +9,24 @@ import Foundation
 
 // LoginModel class to manage id and password.
 class LoginModel {
-    // Properties to store id and password.
-    private var id: String
-    private var pwd: String
+    private let userDefaults = UserDefaults.standard
+    private let userID: String = "userIDText"
+    private let userPW: String = "userPWText"
+
     
-    // Initializer method to set id and password.
-    init(id: String, pwd: String) {
-        self.id = id
-        self.pwd = pwd
+    public func saveUserID(_ text: String) {
+        userDefaults.set(text, forKey: userID)
+    }
+    public func loadUserID() -> String? {
+        return userDefaults.string(forKey: userID)
+    }
+    
+    
+    public func saveUserPW(_ text: String) {
+        userDefaults.set(text, forKey: userPW)
+    }
+    public func loadUserPW() -> String? {
+        return userDefaults.string(forKey: userPW)
     }
     
 }
