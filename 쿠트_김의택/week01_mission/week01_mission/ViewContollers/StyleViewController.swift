@@ -14,7 +14,6 @@ class StyleViewController: UIViewController {
         super.viewDidLoad()
 
     }
-    
 
     
 }

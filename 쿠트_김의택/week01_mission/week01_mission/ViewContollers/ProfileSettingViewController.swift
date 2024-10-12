@@ -9,6 +9,8 @@ import UIKit
 
 class ProfileSettingViewController: UIViewController {
     private lazy var psView = ProfileSettingView()
+    public var receivedProfileImg: UIImage?
+    private let userDefaults = LoginModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +23,8 @@ class ProfileSettingViewController: UIViewController {
         backBarButtonItem.tintColor = .black
         self.navigationItem.leftBarButtonItem = backBarButtonItem
         
+        psView.profileImage.image = receivedProfileImg
+        
         psView.idButton.tag = 1
         psView.pwButton.tag = 2
         psView.idButton.addTarget(self, action: #selector(didTapChange), for: .touchUpInside)
@@ -31,18 +35,29 @@ class ProfileSettingViewController: UIViewController {
     @objc func didTapChange(_ sender: UIButton) {
         switch sender.tag {
         case 1 :
-            psView.idField.text = ""
-            psView.idButton.setTitle("저장", for: .normal)
+            if psView.idButton.titleLabel?.text == "확인" {
+                userDefaults.saveUserID(psView.idField.text!)
+            } else {
+                psView.idField.text = ""
+                psView.idField.isUserInteractionEnabled = true
+                psView.idButton.setTitle("확인", for: .normal)
+            }
+            
         case 2 :
-            psView.pwField.text = ""
-            psView.pwButton.setTitle("저장", for: .normal)
+            if psView.pwButton.titleLabel?.text == "확인" {
+                userDefaults.saveUserPW(psView.pwField.text!)
+            } else {
+                psView.pwField.text = ""
+                psView.pwField.isUserInteractionEnabled = true
+                psView.pwButton.setTitle("확인", for: .normal)
+            }
         default :
             print("error")
         }
         
     }
     
-
+    
     
     @objc func didTapBack() {
         navigationController?.popViewController(animated: true)

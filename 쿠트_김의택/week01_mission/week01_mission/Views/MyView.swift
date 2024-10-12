@@ -36,10 +36,34 @@ class MyView: UIView {
     
     public lazy var profileImage: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "profile x2")
+        imageView.image = UIImage(named: "profile_img")
         imageView.contentMode = .scaleAspectFit
 //        imageView.backgroundColor = .red
         return imageView
+    }()
+    
+    public lazy var profileName: UILabel = {
+        let label = UILabel()
+        label.text = "nelime"
+        label.font = .systemFont(ofSize: 16, weight: .bold)
+        label.textColor = .black
+        return label
+    }()
+    
+    public lazy var profileFollower: UILabel = {
+        let label = UILabel()
+        label.text = "팔로워 2,199"
+        label.font = .systemFont(ofSize: 12)
+        label.textColor = .black
+        return label
+    }()
+    
+    public lazy var profileFollowing: UILabel = {
+        let label = UILabel()
+        label.text = "팔로잉 41"
+        label.font = .systemFont(ofSize: 12)
+        label.textColor = .black
+        return label
     }()
     
     // 프로필 설정 버튼 2개
@@ -75,6 +99,10 @@ class MyView: UIView {
         self.addSubview(settingsIcon)
         self.addSubview(cameraIcon)
         self.addSubview(profileImage)
+        self.addSubview(profileName)
+        self.addSubview(profileFollower)
+        self.addSubview(profileFollowing)
+        
         self.addSubview(profileSettingBtn)
         self.addSubview(profileShareBtn)
         
@@ -91,9 +119,22 @@ class MyView: UIView {
         }
         
         profileImage.snp.makeConstraints { make in
-            make.top.equalTo(settingsIcon.snp.bottom).inset(26)
+            make.top.equalToSuperview().offset(126)
             make.left.equalToSuperview().offset(32.5)
-            make.width.equalTo(221)
+            make.height.width.equalTo(90)
+        }
+        
+        profileName.snp.makeConstraints {
+            $0.left.equalTo(profileImage.snp.right).offset(16)
+            $0.bottom.equalTo(profileImage.snp.centerY).offset(-5)
+        }
+        profileFollower.snp.makeConstraints {
+            $0.left.equalTo(profileImage.snp.right).offset(16)
+            $0.top.equalTo(profileImage.snp.centerY).offset(5)
+        }
+        profileFollowing.snp.makeConstraints {
+            $0.left.equalTo(profileFollower.snp.right).offset(5)
+            $0.top.equalTo(profileImage.snp.centerY).offset(5)
         }
         
         profileSettingBtn.snp.makeConstraints { make in

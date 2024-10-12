@@ -29,6 +29,7 @@ class MyViewController: UIViewController {
     private func buttonDidTap() {
         let viewController = ProfileSettingViewController()
         navigationController?.pushViewController(viewController, animated: true)
+        viewController.receivedProfileImg = myView.profileImage.image
         
         
         

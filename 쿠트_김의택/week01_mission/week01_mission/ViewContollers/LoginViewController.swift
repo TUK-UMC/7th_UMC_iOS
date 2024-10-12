@@ -9,6 +9,8 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
+    private let loginModel = LoginModel()
+    
     private lazy var loginView: LoginView = {
         let view = LoginView()
         view.loginButton.addTarget(self, action: #selector (loginTapped), for: .touchUpInside)
@@ -29,22 +31,13 @@ class LoginViewController: UIViewController {
         viewController.modalPresentationStyle = .fullScreen
         
         present(viewController, animated: true)
+        
+        guard let idText = loginView.idField.text, !idText.isEmpty else { return }
+        guard let pwText = loginView.pwField.text, !pwText.isEmpty else { return }
+        
+        loginModel.saveUserID(idText)
+        loginModel.saveUserPW(pwText)
     }
 }
 
 
-
-
-
-
-
-
-#if DEBUG
-    import SwiftUI
-    
-    struct VCPreView: PreviewProvider {
-        static var previews: some View {
-            BaseViewController().toPreview()
-        }
-    }
-#endif
