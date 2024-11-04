@@ -1,8 +1,8 @@
 import UIKit
 import SnapKit
 
-class HomeView: UIView, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    
+class HomeView: UIView {
+
     let scrollView = UIScrollView()
     let contentView = UIView()
     
@@ -34,55 +34,10 @@ class HomeView: UIView, UICollectionViewDataSource, UICollectionViewDelegateFlow
         imageView.clipsToBounds = true
         return imageView
     }()
-  
-    private let menuItems = ["kreamdraw", "kreamchart", "kreammans", "kreamwomans", "kreamdiff", "kreamlower", "kream24AW", "kreambest", "kreambenefit", "kreamacne"]
-    private let menuTitles = ["크림 드로우", "실시간 차트", "남성 추천", "여성 추천", "색다른 추천", "정가 아래", "윤세 24AW", "올해의 베스트", "10월 베네핏", "아크네 선물"]
-
-    private lazy var menuCollectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
-        layout.minimumLineSpacing = 10
-        layout.minimumInteritemSpacing = 10
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.dataSource = self
-        collectionView.delegate = self
-        collectionView.register(HomeCellView.self, forCellWithReuseIdentifier: "MenuCell")
-        collectionView.showsVerticalScrollIndicator = false
-        return collectionView
-    }()
     
-    private let dropItems = ["MLB", "jordan", "Human"]
-    private let dropTitles = ["MLB", "Jordan", "Human Made"]
-    private let dropSubtitles = ["청키 라이너 뉴욕 양키스", "Jordan 1 Retro High OG Yellow Ochre", "Varsity Jacket"]
-    private let dropPrices = ["139,000원", "228,000원", "2,000,000원"]
-
-    private lazy var dropCollectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        layout.minimumLineSpacing = 10
-        layout.minimumInteritemSpacing = 10
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.dataSource = self
-        collectionView.delegate = self
-        collectionView.register(JustDroppedCellView.self, forCellWithReuseIdentifier: "DropCell")
-        collectionView.showsHorizontalScrollIndicator = false
-        return collectionView
-    }()
-    
-    private let holidayItems = ["karina", "winter", "thousand_woo"]
-
-    private lazy var holidayCollectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        layout.minimumLineSpacing = 10
-        layout.minimumInteritemSpacing = 10
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.dataSource = self
-        collectionView.delegate = self
-        collectionView.register(HolidayCellView.self, forCellWithReuseIdentifier: "HolidayCell")
-        collectionView.showsHorizontalScrollIndicator = false
-        return collectionView
-    }()
+    private let menuCollectionView = MenuCollectionView()
+    private let dropCollectionView = DropCollectionView()
+    private let holidayCollectionView = HolidayCollectionView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -143,7 +98,7 @@ class HomeView: UIView, UICollectionViewDataSource, UICollectionViewDelegateFlow
         }
         
         searchBar.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(20)
+            make.top.equalToSuperview().offset(0)
             make.leading.equalToSuperview().offset(20)
             make.trailing.equalTo(alertButton.snp.leading).offset(-10)
             make.height.equalTo(40)
@@ -209,48 +164,5 @@ class HomeView: UIView, UICollectionViewDataSource, UICollectionViewDelegateFlow
     
     @objc private func searchBarTapped() {
         NotificationCenter.default.post(name: NSNotification.Name("SearchBarTapped"), object: nil)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if collectionView == menuCollectionView {
-            return menuItems.count
-        } else if collectionView == dropCollectionView {
-            return dropItems.count
-        } else {
-            return holidayItems.count
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if collectionView == menuCollectionView {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MenuCell", for: indexPath) as! HomeCellView
-            let imageName = menuItems[indexPath.item]
-            let title = menuTitles[indexPath.item]
-            cell.configure(with: UIImage(named: imageName) ?? UIImage(), title: title)
-            return cell
-        } else if collectionView == dropCollectionView {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DropCell", for: indexPath) as! JustDroppedCellView
-            let imageName = dropItems[indexPath.item]
-            let title = dropTitles[indexPath.item]
-            let subtitle = dropSubtitles[indexPath.item]
-            let price = dropPrices[indexPath.item]
-            cell.configure(with: UIImage(named: imageName) ?? UIImage(), title: title, subtitle: subtitle, price: price)
-            return cell
-        } else {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HolidayCell", for: indexPath) as! HolidayCellView
-            let imageName = holidayItems[indexPath.item]
-            cell.configure(with: UIImage(named: imageName) ?? UIImage())
-            return cell
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if collectionView == menuCollectionView {
-            return CGSize(width: (collectionView.bounds.width - 40) / 5, height: 100)
-        } else if collectionView == dropCollectionView {
-            return CGSize(width: 142, height: 250)
-        } else {
-            return CGSize(width: 124, height: 165)
-        }
     }
 }
