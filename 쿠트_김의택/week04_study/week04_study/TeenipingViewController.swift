@@ -12,7 +12,6 @@ class TeenipingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         view = rootView
         
         setupAction()
