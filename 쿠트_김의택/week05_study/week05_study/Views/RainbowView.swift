@@ -19,6 +19,8 @@ class RainbowView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    
+    
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.showsVerticalScrollIndicator = true

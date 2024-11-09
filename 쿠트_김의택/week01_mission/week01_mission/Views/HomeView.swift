@@ -76,12 +76,45 @@ class HomeView: UIView {
     }()
     
     
+    var scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.showsVerticalScrollIndicator = true
+        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.backgroundColor = .clear
+        return scrollView
+    }()
+    
+    
     let banner = UIImageView().then {
         $0.image = UIImage(named: "banner")
         $0.contentMode = .scaleAspectFill
         $0.clipsToBounds = true
     }
     
+    let justDropped = UILabel().then {
+        $0.text = "Just Dropped"
+        $0.font = .systemFont(ofSize: 16, weight: .bold)
+        $0.textColor = .black
+    }
+    
+    let justDroppedExplain = UILabel().then {
+        $0.text = "발매 상품"
+        $0.font = .systemFont(ofSize: 13, weight: .medium)
+        $0.textColor = .lightGray
+    }
+    
+    let winter = UILabel().then {
+        $0.text = "본격 한파대비! 연말 필수템 모음"
+        $0.font = .systemFont(ofSize: 16, weight: .bold)
+        $0.textColor = .black
+    }
+    
+    let winterExplain = UILabel().then {
+        $0.text = "#해피홀리룩챌린지"
+        $0.font = .systemFont(ofSize: 13, weight: .medium)
+        $0.textColor = .lightGray
+    }
+  
     let recomCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout().then {
         $0.estimatedItemSize = .init(width: 61, height: 81)
         $0.minimumInteritemSpacing = 5
@@ -92,17 +125,65 @@ class HomeView: UIView {
         $0.register(RecomCollectionViewCell.self, forCellWithReuseIdentifier: RecomCollectionViewCell.identifier)
     }
     
+    let justDroppedCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout().then {
+        $0.estimatedItemSize = .init(width: 142, height: 237)
+        $0.minimumLineSpacing = 20
+        $0.scrollDirection = .horizontal
+        $0.sectionInset = .init(top: 0, left: 15, bottom: 0, right: 15)
+    }).then {
+        $0.backgroundColor = .clear
+        $0.isScrollEnabled = true
+        $0.register(JustDroppedCollectionViewCell.self, forCellWithReuseIdentifier: JustDroppedCollectionViewCell.identifier)
+    }
     
-    private func setupView() {
+    let winterCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout().then {
+        $0.estimatedItemSize = .init(width: 124, height: 165)
+        $0.minimumLineSpacing = 20
+        $0.scrollDirection = .horizontal
+        $0.sectionInset = .init(top: 0, left: 15, bottom: 0, right: 15)
+    }).then {
+        $0.backgroundColor = .clear
+        $0.isScrollEnabled = true
+        $0.register(WinterCollectionViewCell.self, forCellWithReuseIdentifier: WinterCollectionViewCell.identifier)
+    }
+    
+    
+    
+    
+    private func setupView(){
         [
             textField,
             alarmButton,
             segmentedControl,
             underLineView,
+            scrollView
+        ].forEach{addSubview($0)}
+        
+        [
             banner,
             recomCollectionView,
-            
-        ].forEach{addSubview($0)}
+            justDropped,
+            justDroppedExplain,
+            justDroppedCollectionView,
+            winter,
+            winterExplain,
+            winterCollectionView
+        ].forEach{scrollView.addSubview($0)}
+        
+        
+        
+        textField.snp.makeConstraints{
+            $0.top.equalTo(safeAreaLayoutGuide).offset(6)
+            $0.left.equalTo(safeAreaLayoutGuide).offset(16)
+            $0.right.equalTo(safeAreaLayoutGuide).offset(-55)
+            $0.height.equalTo(40)
+        }
+        
+        alarmButton.snp.makeConstraints{
+            $0.top.equalTo(safeAreaLayoutGuide).offset(6)
+            $0.right.equalTo(safeAreaLayoutGuide).offset(-16)
+            $0.centerY.equalTo(textField.snp.centerY)
+        }
         
         segmentedControl.snp.makeConstraints {
             $0.top.equalTo(textField.snp.bottom).offset(16)
@@ -120,39 +201,62 @@ class HomeView: UIView {
             //이 부분이 중요한데 밑줄의 width는 위에서 선언된 segment control의 길이를 segment의 개수로 나눈 길이 이다
         }
         
-        textField.snp.makeConstraints{
-            $0.top.equalTo(safeAreaLayoutGuide).offset(6)
-            $0.left.equalTo(safeAreaLayoutGuide).offset(16)
-            $0.right.equalTo(safeAreaLayoutGuide).offset(-55)
-            $0.height.equalTo(40)
+        scrollView.snp.makeConstraints{
+            $0.top.equalTo(underLineView.snp.bottom)
+            $0.horizontalEdges.equalToSuperview()
+            $0.bottom.equalToSuperview().offset(-90)
         }
-        
-        alarmButton.snp.makeConstraints{
-            $0.top.equalTo(safeAreaLayoutGuide).offset(6)
-            $0.right.equalTo(safeAreaLayoutGuide).offset(-16)
-            $0.centerY.equalTo(textField.snp.centerY)
-        }
-        
-        
-        //        segmentedControl.snp.makeConstraints{
-        //            $0.top.equalTo(textField.snp.bottom).offset(16)
-        //            $0.horizontalEdges.equalToSuperview().inset(16)
-        //            $0.height.equalTo(27)
-        //        }
         
         
         
         banner.snp.makeConstraints{
-            $0.top.equalTo(underLineView.snp.bottom)
-            $0.horizontalEdges.equalTo(safeAreaLayoutGuide)
+            $0.top.equalToSuperview()
+            $0.centerX.equalToSuperview()
+            $0.horizontalEdges.equalToSuperview()
+            $0.height.equalTo(400)
         }
         
         
         recomCollectionView.snp.makeConstraints{
             $0.top.equalTo(banner.snp.bottom).offset(20)
             $0.horizontalEdges.equalToSuperview().inset(16)
-            $0.height.equalTo(200)
+            $0.height.equalTo(182)
             
+        }
+        
+        justDropped.snp.makeConstraints{
+            $0.top.equalTo(recomCollectionView.snp.bottom).offset(45)
+            $0.left.equalToSuperview().inset(16)
+        }
+        
+        justDroppedExplain.snp.makeConstraints{
+            $0.top.equalTo(justDropped.snp.bottom).offset(10)
+            $0.left.equalToSuperview().inset(16)
+        }
+        
+        justDroppedCollectionView.snp.makeConstraints{
+            $0.top.equalTo(recomCollectionView.snp.bottom).offset(103)
+            $0.left.right.equalToSuperview()
+            $0.height.equalTo(237)
+            
+            
+        }
+        
+        winter.snp.makeConstraints{
+            $0.top.equalTo(justDroppedCollectionView.snp.bottom).offset(45)
+            $0.left.equalToSuperview().inset(16)
+        }
+        
+        winterExplain.snp.makeConstraints{
+            $0.top.equalTo(winter.snp.bottom).offset(10)
+            $0.left.equalToSuperview().inset(16)
+        }
+        
+        winterCollectionView.snp.makeConstraints{
+            $0.top.equalTo(winterExplain.snp.bottom).offset(14)
+            $0.height.equalTo(165)
+            $0.left.right.equalToSuperview()
+            $0.bottom.equalToSuperview()
         }
     }
 }

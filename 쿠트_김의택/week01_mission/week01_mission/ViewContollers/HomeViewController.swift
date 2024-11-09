@@ -22,6 +22,8 @@ class HomeViewController: UIViewController {
     
     private func setupDelegate(){
         homeView.recomCollectionView.dataSource = self
+        homeView.justDroppedCollectionView.dataSource = self
+        homeView.winterCollectionView.dataSource = self
     }
     
     private func setupAction() {
@@ -34,29 +36,14 @@ class HomeViewController: UIViewController {
     
     
     
-    //    @objc
-    //    private func segmentedControlValueChanged(segment: UISegmentedControl) {
-    //        if segment.selectedSegmentIndex == 0 {
-    //            homeView.recomCollectionView.isHidden = false
-    //            homeView.banner.isHidden = false
-    //
-    //        }
-    //        else {
-    //            homeView.recomCollectionView.isHidden = true
-    //            homeView.banner.isHidden = true
-    //
-    //        }
-    //    }
-    
     @objc private func changeUnderLinePosition(segment: UISegmentedControl) {
         if segment.selectedSegmentIndex == 0 {
-            homeView.recomCollectionView.isHidden = false
-            homeView.banner.isHidden = false
+            homeView.scrollView.isHidden = false
+            
             
         }
         else {
-            homeView.recomCollectionView.isHidden = true
-            homeView.banner.isHidden = true
+            homeView.scrollView.isHidden = true
             
         }
         
@@ -80,24 +67,71 @@ class HomeViewController: UIViewController {
 }
 
 extension HomeViewController: UICollectionViewDataSource {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return RecomModel.dummy().count
+        if collectionView == homeView.recomCollectionView {
+            return RecomModel.dummy().count
+        } else if collectionView == homeView.justDroppedCollectionView {
+            return JustDroppedModel.dummy().count
+        } else {
+            return WinterModel.dummy().count
+        }
+        
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: RecomCollectionViewCell.identifier,
-            for: indexPath
-        ) as? RecomCollectionViewCell else {
-            return UICollectionViewCell()
+        
+        if collectionView == homeView.recomCollectionView {
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: RecomCollectionViewCell.identifier,
+                for: indexPath
+            ) as? RecomCollectionViewCell else {
+                return UICollectionViewCell()
+            }
+            
+            let list = RecomModel.dummy()
+            
+            cell.imageView.image = list[indexPath.row].image
+            cell.titleLabel.text = list[indexPath.row].name
+            
+            return cell
+        } else if collectionView == homeView.justDroppedCollectionView {
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: JustDroppedCollectionViewCell.identifier,
+                for: indexPath
+            ) as? JustDroppedCollectionViewCell else {
+                return UICollectionViewCell()
+            }
+            
+            let list = JustDroppedModel.dummy()
+            
+            cell.imageView.image = list[indexPath.row].image
+            cell.name.text = list[indexPath.row].name
+            cell.explain.text = list[indexPath.row].explain
+            cell.price.text = list[indexPath.row].price
+            cell.deal.text = list[indexPath.row].deal
+            
+            
+            return cell
+        } else {
+            guard let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: WinterCollectionViewCell.identifier,
+                for: indexPath
+            ) as? WinterCollectionViewCell else {
+                return UICollectionViewCell()
+            }
+            
+            let list = WinterModel.dummy()
+            
+            cell.imageView.image = list[indexPath.row].image
+            cell.titleLabel.text = list[indexPath.row].id
+            
+            return cell
         }
         
-        let list = RecomModel.dummy()
         
-        cell.imageView.image = list[indexPath.row].image
-        cell.titleLabel.text = list[indexPath.row].name
         
-        return cell
     }
     
     
