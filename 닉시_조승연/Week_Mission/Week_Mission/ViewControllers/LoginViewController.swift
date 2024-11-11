@@ -1,10 +1,3 @@
-//
-//  LoginViewController.swift
-//  Week_Mission
-//
-//  Created by 조승연 on 10/10/24.
-//
-
 import UIKit
 
 class LoginViewController: UIViewController {
