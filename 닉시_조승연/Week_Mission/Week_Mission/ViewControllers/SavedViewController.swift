@@ -1,43 +1,28 @@
-//
-//  SavedViewController.swift
-//  Week03_Mission
-//
-//  Created by 조승연 on 10/12/24.
-//
-
 import UIKit
-import SnapKit
 
-class SavedViewController: UIViewController {
+class SavedViewController: UIViewController, UITableViewDelegate {
     
-    let data = dummySavedModel.savedDatas
-    
+    private let data = DummySavedModelProvider.savedData
+    private lazy var savedView = SavedView()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view = savedView
-    
+        view = savedView
+        savedView.tableView.dataSource = self
+        savedView.tableView.delegate = self
     }
-    
-    private lazy var savedView: SavedView = {
-        let view = SavedView()
-        view.tableView.dataSource = self
-        return view
-    }()
 }
 
-extension SavedViewController: UITableViewDataSource, UITableViewDelegate {
+extension SavedViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            data.count
+        return data.count
     }
         
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SavedCell.identifier, for: indexPath) as? SavedCell else {
             return UITableViewCell()
         }
-            
-        cell.configure(model: data[indexPath.row])
-            
+        cell.configure(with: data[indexPath.row])
         return cell
     }
-    
 }

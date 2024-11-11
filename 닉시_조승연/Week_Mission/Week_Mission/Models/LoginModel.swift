@@ -19,26 +19,24 @@ struct LoginModel {
     
     mutating func setId(newId: String) {
         self.id = newId
-        saveToUserDefaults()  // ID가 변경되면 UserDefaults에 저장
+        saveToUserDefaults()
     }
     
     mutating func setPassword(newPassword: String) {
         self.password = newPassword
-        saveToUserDefaults()  // 비밀번호가 변경되면 UserDefaults에 저장
+        saveToUserDefaults()
     }
     
     func validateLogin(inputId: String, inputPassword: String) -> Bool {
         return self.id == inputId && self.password == inputPassword
     }
     
-    // UserDefaults에 로그인 정보 저장
     private func saveToUserDefaults() {
         let userDefaults = UserDefaults.standard
         userDefaults.set(id, forKey: "userId")
         userDefaults.set(password, forKey: "userPassword")
     }
     
-    // UserDefaults에서 로그인 정보 불러오기
     static func loadFromUserDefaults() -> LoginModel? {
         let userDefaults = UserDefaults.standard
         if let savedId = userDefaults.string(forKey: "userId"),
@@ -48,7 +46,6 @@ struct LoginModel {
         return nil
     }
     
-    // UserDefaults에서 로그인 정보 삭제
     static func removeFromUserDefaults() {
         let userDefaults = UserDefaults.standard
         userDefaults.removeObject(forKey: "userId")
