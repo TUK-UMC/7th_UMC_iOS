@@ -1,0 +1,11 @@
+//
+//  Config.xcconfig
+//  Week07_Study
+//
+//  Created by 조승연 on 11/11/24.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+API_KEY = bfc5af2c81cafa2f23ee1e5a3df5f04e
