@@ -1,10 +1,3 @@
-//
-//  LoginView.swift
-//  Week03_Mission
-//
-//  Created by 조승연 on 10/12/24.
-//
-
 import UIKit
 
 class LoginView: UIView {
@@ -41,7 +34,7 @@ class LoginView: UIView {
         return label
     }()
     
-    let emailTextField: UITextField = { // 'private' 제거하여 외부에서 접근 가능하도록 변경
+    let emailTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "예) kream@kream.co.kr"
         textField.autocapitalizationType = .none
@@ -67,7 +60,7 @@ class LoginView: UIView {
         return label
     }()
     
-    let passwordTextField: UITextField = { // 'private' 제거하여 외부에서 접근 가능하도록 변경
+    let passwordTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "비밀번호를 입력해주세요"
         textField.isSecureTextEntry = true
@@ -94,6 +87,38 @@ class LoginView: UIView {
         return button
     }()
     
+    let kakaoLoginButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("카카오로 로그인", for: .normal)
+        button.setImage(UIImage(named: "kakaologin"), for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 13)
+        button.tintColor = .black
+        button.contentHorizontalAlignment = .left
+        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
+        button.titleEdgeInsets = UIEdgeInsets(top: 0, left: 100, bottom: 0, right: 0)
+        button.layer.cornerRadius = 8
+        button.layer.borderWidth = 1
+        button.layer.borderColor = UIColor.lightGray.cgColor
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    let appleLoginButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Apple로 로그인", for: .normal)
+        button.setImage(UIImage(named: "applelogin"), for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 13)
+        button.tintColor = .black
+        button.contentHorizontalAlignment = .left
+        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
+        button.titleEdgeInsets = UIEdgeInsets(top: 0, left: 100, bottom: 0, right: 0)
+        button.layer.cornerRadius = 8
+        button.layer.borderWidth = 1
+        button.layer.borderColor = UIColor.lightGray.cgColor
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
@@ -115,6 +140,8 @@ class LoginView: UIView {
         addSubview(passwordLabel)
         addSubview(passwordTextField)
         addSubview(loginButton)
+        addSubview(kakaoLoginButton)
+        addSubview(appleLoginButton)
     }
 
     private func setupConstraints() {
@@ -144,7 +171,17 @@ class LoginView: UIView {
             loginButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 20),
             loginButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 40),
             loginButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -40),
-            loginButton.heightAnchor.constraint(equalToConstant: 40)
+            loginButton.heightAnchor.constraint(equalToConstant: 40),
+            
+            kakaoLoginButton.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 80),
+            kakaoLoginButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 40),
+            kakaoLoginButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -40),
+            kakaoLoginButton.heightAnchor.constraint(equalToConstant: 40),
+            
+            appleLoginButton.topAnchor.constraint(equalTo: kakaoLoginButton.bottomAnchor, constant: 25),
+            appleLoginButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 40),
+            appleLoginButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -40),
+            appleLoginButton.heightAnchor.constraint(equalToConstant: 40)
         ])
     }
 }
