@@ -67,12 +67,4 @@ class DetailpageViewController: UIViewController, UICollectionViewDataSource {
 
 
 
-#if DEBUG
-import SwiftUI
 
-struct VCPreView: PreviewProvider {
-    static var previews: some View {
-        DetailpageViewController().toPreview()
-    }
-}
-#endif
