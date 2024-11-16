@@ -30,6 +30,7 @@ class JustDroppedCollectionViewCell: UICollectionViewCell {
         $0.clipsToBounds = true
     }
     
+    
     let deal = UILabel().then {
         $0.font = .systemFont(ofSize: 10, weight: .light)
         $0.textColor = .gray
@@ -88,6 +89,7 @@ class JustDroppedCollectionViewCell: UICollectionViewCell {
             $0.width.height.equalTo(142)
         }
         
+     
         [
             deal,
             saveButton

@@ -7,13 +7,12 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, UICollectionViewDelegate {
     private lazy var homeView = HomeView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view = homeView
-        
         setupDelegate()
         setupAction()
         
@@ -24,6 +23,9 @@ class HomeViewController: UIViewController {
         homeView.recomCollectionView.dataSource = self
         homeView.justDroppedCollectionView.dataSource = self
         homeView.winterCollectionView.dataSource = self
+        
+        homeView.justDroppedCollectionView.delegate = self
+        
     }
     
     private func setupAction() {
@@ -35,16 +37,12 @@ class HomeViewController: UIViewController {
     }
     
     
-    
     @objc private func changeUnderLinePosition(segment: UISegmentedControl) {
         if segment.selectedSegmentIndex == 0 {
             homeView.scrollView.isHidden = false
-            
-            
         }
         else {
             homeView.scrollView.isHidden = true
-            
         }
         
         let segmentIndex = CGFloat(homeView.segmentedControl.selectedSegmentIndex)
@@ -66,7 +64,15 @@ class HomeViewController: UIViewController {
     
 }
 
+
+
 extension HomeViewController: UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let detailVC = DetailpageViewController()
+        navigationController?.pushViewController(detailVC, animated: true)
+    }
+    
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == homeView.recomCollectionView {
@@ -76,9 +82,8 @@ extension HomeViewController: UICollectionViewDataSource {
         } else {
             return WinterModel.dummy().count
         }
-        
-        
     }
+    
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
@@ -130,19 +135,6 @@ extension HomeViewController: UICollectionViewDataSource {
             return cell
         }
         
-        
-        
     }
     
-    
 }
-
-#if DEBUG
-import SwiftUI
-
-struct VCPreView: PreviewProvider {
-    static var previews: some View {
-        HomeViewController().toPreview()
-    }
-}
-#endif

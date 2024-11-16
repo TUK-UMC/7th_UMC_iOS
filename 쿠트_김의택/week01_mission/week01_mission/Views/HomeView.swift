@@ -173,15 +173,15 @@ class HomeView: UIView {
         
         
         textField.snp.makeConstraints{
-            $0.top.equalTo(safeAreaLayoutGuide).offset(6)
-            $0.left.equalTo(safeAreaLayoutGuide).offset(16)
-            $0.right.equalTo(safeAreaLayoutGuide).offset(-55)
+            $0.top.equalToSuperview().offset(55)
+            $0.left.equalToSuperview().offset(16)
+            $0.right.equalToSuperview().offset(-55)
             $0.height.equalTo(40)
         }
         
         alarmButton.snp.makeConstraints{
-            $0.top.equalTo(safeAreaLayoutGuide).offset(6)
-            $0.right.equalTo(safeAreaLayoutGuide).offset(-16)
+            $0.top.equalToSuperview().offset(55)
+            $0.right.equalToSuperview().offset(-16)
             $0.centerY.equalTo(textField.snp.centerY)
         }
         
