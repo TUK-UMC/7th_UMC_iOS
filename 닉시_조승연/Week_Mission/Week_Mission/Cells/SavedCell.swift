@@ -1,34 +1,9 @@
-//
-//  SavedTableViewCell.swift
-//  Week_Mission
-//
-//  Created by 조승연 on 10/12/24.
-//
-
 import UIKit
 import SnapKit
 
 class SavedCell: UITableViewCell {
     
     static let identifier = "SavedCell"
-
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?){
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        self.setViews()
-        self.setConstraints()
-    }
-    
-    override func prepareForReuse(){
-        super.prepareForReuse()
-        self.savedImageView.image = nil
-        self.savedName.text = nil
-        self.savedPrice.text = nil
-        self.savedExplain.text = nil
-    }
-    
-    required init?(coder: NSCoder){
-        fatalError("init(coder :) has not been implemented")
-    }
 
     private lazy var savedImageView: UIImageView = {
         let imageView = UIImageView()
@@ -39,25 +14,25 @@ class SavedCell: UITableViewCell {
     }()
 
     private lazy var savedName: UILabel = {
-        let name = UILabel()
-        name.font = UIFont.systemFont(ofSize: 16, weight: .bold)
-        name.textColor = UIColor.black
-        return name
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+        label.textColor = .black
+        return label
     }()
 
     private lazy var savedPrice: UILabel = {
-        let price = UILabel()
-        price.font = UIFont.systemFont(ofSize: 14, weight: .bold)
-        price.textColor = UIColor.black
-        return price
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 14, weight: .bold)
+        label.textColor = .black
+        return label
     }()
     
     private lazy var savedExplain: UILabel = {
-        let explain = UILabel()
-        explain.font = UIFont.systemFont(ofSize: 9, weight: .medium)
-        explain.textColor = UIColor.gray
-        explain.numberOfLines = 0 // 여러 줄 설명을 가능하게 함
-        return explain
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 9, weight: .medium)
+        label.textColor = .gray
+        label.numberOfLines = 0
+        return label
     }()
 
     private lazy var bookmarkButton: UIButton = {
@@ -66,15 +41,25 @@ class SavedCell: UITableViewCell {
         return button
     }()
     
-    private func setViews() {
-        self.addSubview(savedImageView)
-        self.addSubview(savedName)
-        self.addSubview(savedPrice)
-        self.addSubview(savedExplain)
-        self.addSubview(bookmarkButton)
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setupViews()
+        setupConstraints()
     }
     
-    private func setConstraints() {
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setupViews() {
+        contentView.addSubview(savedImageView)
+        contentView.addSubview(savedName)
+        contentView.addSubview(savedPrice)
+        contentView.addSubview(savedExplain)
+        contentView.addSubview(bookmarkButton)
+    }
+    
+    private func setupConstraints() {
         savedImageView.snp.makeConstraints {
             $0.centerY.equalToSuperview()
             $0.left.equalToSuperview().offset(15)
@@ -96,7 +81,7 @@ class SavedCell: UITableViewCell {
         bookmarkButton.snp.makeConstraints {
             $0.centerY.equalTo(savedName.snp.centerY)
             $0.right.equalToSuperview().offset(-12)
-            $0.width.height.equalTo(24)  // 북마크 버튼 크기
+            $0.width.height.equalTo(24)
         }
         
         savedPrice.snp.makeConstraints {
@@ -106,11 +91,18 @@ class SavedCell: UITableViewCell {
         }
     }
 
+    func configure(with model: SavedModel) {
+        savedImageView.image = UIImage(named: model.savedImage)
+        savedName.text = model.savedName
+        savedPrice.text = model.savedPrice
+        savedExplain.text = model.savedExplain
+    }
 
-    public func configure(model: SavedModel){
-        self.savedImageView.image = UIImage(named: model.SavedImage)
-        self.savedName.text = model.SavedName
-        self.savedPrice.text = model.SavedPrice
-        self.savedExplain.text = model.SavedExplain
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        savedImageView.image = nil
+        savedName.text = nil
+        savedPrice.text = nil
+        savedExplain.text = nil
     }
 }

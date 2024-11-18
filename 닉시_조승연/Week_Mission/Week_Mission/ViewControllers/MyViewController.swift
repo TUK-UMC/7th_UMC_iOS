@@ -1,10 +1,3 @@
-//
-//  MyViewController.swift
-//  Week03_Mission
-//
-//  Created by 조승연 on 10/12/24.
-//
-
 import UIKit
 
 class MyViewController: UIViewController {

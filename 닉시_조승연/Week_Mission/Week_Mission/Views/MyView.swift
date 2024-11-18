@@ -1,10 +1,3 @@
-//
-//  MyView.swift
-//  Week03_Mission
-//
-//  Created by 조승연 on 10/12/24.
-//
-
 import UIKit
 import SnapKit
 
@@ -12,10 +5,13 @@ class MyView: UIView {
     
     var viewController: UIViewController?
     var profileImage: UIImage?
-    
+
+    private let usernameLabel = UILabel()
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
+        loadNicknameFromKeychain()
     }
     
     required init?(coder: NSCoder) {
@@ -41,14 +37,13 @@ class MyView: UIView {
         topBarView.addSubview(cameraIcon)
         
         let profileImageView = UIImageView()
-        profileImageView.image = UIImage(named: "hachiwarae") // 기본 이미지 설정
-        self.profileImage = profileImageView.image // 기본 이미지를 profileImage로 저장
+        profileImageView.image = UIImage(named: "hachiwarae")
+        self.profileImage = profileImageView.image
         profileImageView.layer.cornerRadius = 40
         profileImageView.layer.masksToBounds = true
         addSubview(profileImageView)
         
-        let usernameLabel = UILabel()
-        usernameLabel.text = "SeungYeon_iOS"
+        usernameLabel.text = "Default Username"
         usernameLabel.font = UIFont.boldSystemFont(ofSize: 20)
         usernameLabel.textAlignment = .left
         addSubview(usernameLabel)
@@ -129,9 +124,17 @@ class MyView: UIView {
         }
     }
     
+    private func loadNicknameFromKeychain() {
+        if let nickname = KeychainHelper.shared.get(key: "kakaoNickname") {
+            usernameLabel.text = nickname
+        } else {
+            usernameLabel.text = "닉네임 없음"
+        }
+    }
+    
     @objc private func manageProfileButtonTapped() {
         let profileEditVC = ProfileEditViewController()
-        profileEditVC.profileImage = self.profileImage // 프로필 이미지를 ProfileEditViewController로 전달
+        profileEditVC.profileImage = self.profileImage 
         viewController?.navigationController?.pushViewController(profileEditVC, animated: true)
     }
 }

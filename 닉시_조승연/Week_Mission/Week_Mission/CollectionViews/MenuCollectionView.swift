@@ -36,4 +36,26 @@ class MenuCollectionView: UICollectionView, UICollectionViewDataSource, UICollec
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: (collectionView.bounds.width - 40) / 5, height: 100)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if model.menuTitles[indexPath.item] == "색다른 추천" {
+            let detailModel = DetailModel()
+            let detailViewController = DetailViewController(model: detailModel)
+            let parentViewController = self.parentViewController()
+            parentViewController?.navigationController?.pushViewController(detailViewController, animated: true)
+        }
+    }
+}
+
+extension UIView {
+    func parentViewController() -> UIViewController? {
+        var parentResponder: UIResponder? = self
+        while let responder = parentResponder {
+            parentResponder = responder.next
+            if let viewController = responder as? UIViewController {
+                return viewController
+            }
+        }
+        return nil
+    }
 }
