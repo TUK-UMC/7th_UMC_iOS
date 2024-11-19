@@ -53,7 +53,7 @@ class HomeViewController: UIViewController {
     }
     
     @objc private func showSearchView() {
-        let searchViewController = SimpleSearchViewController()
+        let searchViewController = SearchViewController()
         navigationController?.pushViewController(searchViewController, animated: true)
     }
     
