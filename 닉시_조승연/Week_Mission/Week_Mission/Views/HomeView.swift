@@ -1,5 +1,6 @@
 import UIKit
 import SnapKit
+import Kingfisher
 
 class HomeView: UIView {
 
@@ -10,7 +11,6 @@ class HomeView: UIView {
         let textField = UITextField()
         textField.placeholder = "브랜드, 상품, 프로필, 태그 등"
         textField.borderStyle = .roundedRect
-        textField.isUserInteractionEnabled = true
         return textField
     }()
     
@@ -95,6 +95,7 @@ class HomeView: UIView {
         contentView.snp.makeConstraints {
             $0.edges.equalTo(scrollView)
             $0.width.equalTo(scrollView)
+            $0.bottom.equalTo(holidayCollectionView.snp.bottom).offset(20)
         }
         
         searchBar.snp.makeConstraints {
@@ -158,7 +159,6 @@ class HomeView: UIView {
             $0.top.equalTo(holidaySubtitleLabel.snp.bottom).offset(5)
             $0.leading.trailing.equalToSuperview().inset(20)
             $0.height.equalTo(165)
-            $0.bottom.equalToSuperview().offset(-20)
         }
     }
     

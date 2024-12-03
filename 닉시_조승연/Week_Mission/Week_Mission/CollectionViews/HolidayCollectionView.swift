@@ -27,8 +27,8 @@ class HolidayCollectionView: UICollectionView, UICollectionViewDataSource, UICol
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HolidayCell", for: indexPath) as! HolidayCellView
-        let imageName = model.holidayItems[indexPath.item]
-        cell.configure(with: UIImage(named: imageName) ?? UIImage())
+        let imageUrl = model.holidayItems[indexPath.item]
+        cell.configure(with: imageUrl)
         return cell
     }
 

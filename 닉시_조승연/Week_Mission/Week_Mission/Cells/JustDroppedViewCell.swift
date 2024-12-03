@@ -47,7 +47,7 @@ class JustDroppedCellView: UICollectionViewCell {
         }
         
         priceLabel.snp.makeConstraints { make in
-            make.top.equalTo(subtitleLabel.snp.bottom).offset(10) // 여백을 넓게 설정
+            make.top.equalTo(subtitleLabel.snp.bottom).offset(10) 
             make.leading.trailing.equalToSuperview()
         }
         
@@ -62,11 +62,10 @@ class JustDroppedCellView: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(with image: UIImage, title: String, subtitle: String, price: String) {
-        imageView.image = image
-        titleLabel.text = title
-        subtitleLabel.text = subtitle
-        priceLabel.text = price
-        purchaseLabel.text = "즉시 구매가"
-    }
+    func configure(with imageUrl: String, title: String, subtitle: String, price: String) {
+            imageView.kf.setImage(with: URL(string: imageUrl))
+            titleLabel.text = title
+            subtitleLabel.text = subtitle
+            priceLabel.text = price
+        }
 }
