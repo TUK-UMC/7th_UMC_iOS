@@ -19,6 +19,7 @@
 		68578D872CEC2B6600893E07 /* KakaoSDKCommon in Frameworks */ = {isa = PBXBuildFile; productRef = 68578D862CEC2B6600893E07 /* KakaoSDKCommon */; };
 		68578D8A2CEC2B7100893E07 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 68578D892CEC2B7100893E07 /* KeychainAccess */; };
 		68578D8D2CEC2C8B00893E07 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 68578D8C2CEC2C8B00893E07 /* SnapKit */; };
+		686418C92CFEA52F00D3D7A7 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 686418C82CFEA52F00D3D7A7 /* Kingfisher */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +89,7 @@
 				68578D8A2CEC2B7100893E07 /* KeychainAccess in Frameworks */,
 				68578D742CEC2B4000893E07 /* RxMoya in Frameworks */,
 				68578D722CEC2B4000893E07 /* ReactiveMoya in Frameworks */,
+				686418C92CFEA52F00D3D7A7 /* Kingfisher in Frameworks */,
 				68578D812CEC2B6600893E07 /* KakaoSDKAuth in Frameworks */,
 				68578D8D2CEC2C8B00893E07 /* SnapKit in Frameworks */,
 				68578D852CEC2B6600893E07 /* KakaoSDKCertCore in Frameworks */,
@@ -164,6 +166,7 @@
 				68578D862CEC2B6600893E07 /* KakaoSDKCommon */,
 				68578D892CEC2B7100893E07 /* KeychainAccess */,
 				68578D8C2CEC2C8B00893E07 /* SnapKit */,
+				686418C82CFEA52F00D3D7A7 /* Kingfisher */,
 			);
 			productName = Week_Mission;
 			productReference = 68FA829C2CD3531300738DC5 /* Week_Mission.app */;
@@ -253,6 +256,7 @@
 				68578D7D2CEC2B6600893E07 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
 				68578D882CEC2B7100893E07 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 				68578D8B2CEC2C8B00893E07 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				686418C72CFEA52F00D3D7A7 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 68FA829D2CD3531300738DC5 /* Products */;
@@ -655,6 +659,14 @@
 				minimumVersion = 5.7.1;
 			};
 		};
+		686418C72CFEA52F00D3D7A7 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.1.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -717,6 +729,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 68578D8B2CEC2C8B00893E07 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		686418C82CFEA52F00D3D7A7 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 686418C72CFEA52F00D3D7A7 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
