@@ -88,77 +88,77 @@ class HomeView: UIView {
         
         contentView.addSubview(holidayCollectionView)
         
-        scrollView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+        scrollView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
         }
         
-        contentView.snp.makeConstraints { make in
-            make.edges.equalTo(scrollView)
-            make.width.equalTo(scrollView)
+        contentView.snp.makeConstraints {
+            $0.edges.equalTo(scrollView)
+            $0.width.equalTo(scrollView)
         }
         
-        searchBar.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(0)
-            make.leading.equalToSuperview().offset(20)
-            make.trailing.equalTo(alertButton.snp.leading).offset(-10)
-            make.height.equalTo(40)
+        searchBar.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(0)
+            $0.leading.equalToSuperview().offset(20)
+            $0.trailing.equalTo(alertButton.snp.leading).offset(-10)
+            $0.height.equalTo(40)
         }
         
-        alertButton.snp.makeConstraints { make in
-            make.centerY.equalTo(searchBar)
-            make.trailing.equalToSuperview().inset(20)
-            make.width.height.equalTo(40)
+        alertButton.snp.makeConstraints {
+            $0.centerY.equalTo(searchBar)
+            $0.trailing.equalToSuperview().inset(20)
+            $0.width.height.equalTo(40)
         }
         
-        segmentedControl.snp.makeConstraints { make in
-            make.top.equalTo(searchBar.snp.bottom).offset(10)
-            make.leading.trailing.equalToSuperview().inset(20)
-            make.height.equalTo(30)
+        segmentedControl.snp.makeConstraints {
+            $0.top.equalTo(searchBar.snp.bottom).offset(10)
+            $0.leading.trailing.equalToSuperview().inset(20)
+            $0.height.equalTo(30)
         }
         
-        advertisementImageView.snp.makeConstraints { make in
-            make.top.equalTo(segmentedControl.snp.bottom).offset(10)
-            make.leading.trailing.equalToSuperview()
-            make.height.equalTo(advertisementImageView.snp.width).multipliedBy(344.0 / 374.0)
+        advertisementImageView.snp.makeConstraints {
+            $0.top.equalTo(segmentedControl.snp.bottom).offset(10)
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(advertisementImageView.snp.width).multipliedBy(344.0 / 374.0)
         }
 
-        menuCollectionView.snp.makeConstraints { make in
-            make.top.equalTo(advertisementImageView.snp.bottom).offset(10)
-            make.leading.trailing.equalToSuperview().inset(20)
-            make.height.equalTo(220)
+        menuCollectionView.snp.makeConstraints {
+            $0.top.equalTo(advertisementImageView.snp.bottom).offset(10)
+            $0.leading.trailing.equalToSuperview().inset(20)
+            $0.height.equalTo(220)
         }
         
-        justDroppedLabel.snp.makeConstraints { make in
-            make.top.equalTo(menuCollectionView.snp.bottom).offset(10)
-            make.leading.equalToSuperview().offset(20)
+        justDroppedLabel.snp.makeConstraints {
+            $0.top.equalTo(menuCollectionView.snp.bottom).offset(10)
+            $0.leading.equalToSuperview().offset(20)
         }
         
-        releaseLabel.snp.makeConstraints { make in
-            make.top.equalTo(justDroppedLabel.snp.bottom).offset(3)
-            make.leading.equalToSuperview().offset(20)
+        releaseLabel.snp.makeConstraints {
+            $0.top.equalTo(justDroppedLabel.snp.bottom).offset(3)
+            $0.leading.equalToSuperview().offset(20)
         }
         
-        dropCollectionView.snp.makeConstraints { make in
-            make.top.equalTo(releaseLabel.snp.bottom).offset(5)
-            make.leading.trailing.equalToSuperview().inset(20)
-            make.height.equalTo(300)
+        dropCollectionView.snp.makeConstraints {
+            $0.top.equalTo(releaseLabel.snp.bottom).offset(5)
+            $0.leading.trailing.equalToSuperview().inset(20)
+            $0.height.equalTo(300)
         }
         
-        holidayLabel.snp.makeConstraints { make in
-            make.top.equalTo(dropCollectionView.snp.bottom).offset(10)
-            make.leading.equalToSuperview().offset(20)
+        holidayLabel.snp.makeConstraints {
+            $0.top.equalTo(dropCollectionView.snp.bottom).offset(10)
+            $0.leading.equalToSuperview().offset(20)
         }
         
-        holidaySubtitleLabel.snp.makeConstraints { make in
-            make.top.equalTo(holidayLabel.snp.bottom).offset(3)
-            make.leading.equalToSuperview().offset(20)
+        holidaySubtitleLabel.snp.makeConstraints {
+            $0.top.equalTo(holidayLabel.snp.bottom).offset(3)
+            $0.leading.equalToSuperview().offset(20)
         }
         
-        holidayCollectionView.snp.makeConstraints { make in
-            make.top.equalTo(holidaySubtitleLabel.snp.bottom).offset(5)
-            make.leading.trailing.equalToSuperview().inset(20)
-            make.height.equalTo(165)
-            make.bottom.equalToSuperview().offset(-20)
+        holidayCollectionView.snp.makeConstraints {
+            $0.top.equalTo(holidaySubtitleLabel.snp.bottom).offset(5)
+            $0.leading.trailing.equalToSuperview().inset(20)
+            $0.height.equalTo(165)
+            $0.bottom.equalToSuperview().offset(-20)
         }
     }
     

@@ -35,7 +35,7 @@ class BaseTabBarController: UITabBarController {
 
         let homeVC = createNavController(vc: HomeViewController(), title: "HOME", imageName: "home", selectedImageName: "home.fill", imageSize: CGSize(width: 20, height: 21), selectedImageSize: CGSize(width: 20, height: 21))
         let styleVC = createNavController(vc: StyleViewController(), title: "STYLE", imageName: "style", selectedImageName: "style.fill", imageSize: CGSize(width: 28, height: 25), selectedImageSize: CGSize(width: 28, height: 25))
-        let searchVC = createNavController(vc: SearchViewController(), title: "SHOP", imageName: "search", selectedImageName: "search.fill", imageSize: CGSize(width: 31, height: 31), selectedImageSize: CGSize(width: 31, height: 31))
+        let searchVC = createNavController(vc: TabSearchViewController(), title: "SHOP", imageName: "search", selectedImageName: "search.fill", imageSize: CGSize(width: 31, height: 31), selectedImageSize: CGSize(width: 31, height: 31))
         let savedVC = createNavController(vc: SavedViewController(), title: "SAVED", imageName: "saved", selectedImageName: "saved.fill", imageSize: CGSize(width: 18, height: 21), selectedImageSize: CGSize(width: 18, height: 21))
         let myVC = createNavController(vc: MyViewController(), title: "MY", imageName: "my", selectedImageName: "my.fill", imageSize: CGSize(width: 25, height: 25), selectedImageSize: CGSize(width: 25, height: 25))
         
