@@ -172,47 +172,100 @@ class LoginView: UIView {
         self.addSubview(loginButton)
         self.addSubview(kakaoLogin)
         self.addSubview(appleLogin)
+        
+
+        // SnapKit을 사용한 제약 설정
+        titleImage.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(126)
+            make.centerX.equalToSuperview()
+        }
+
+        idTitle.snp.makeConstraints { make in
+            make.top.equalTo(titleImage.snp.bottom).offset(87)
+            make.left.equalToSuperview().offset(45)
+        }
+
+        idField.snp.makeConstraints { make in
+            make.top.equalTo(idTitle.snp.bottom).offset(10)
+            make.centerX.equalToSuperview()
+            make.width.equalTo(303)
+            make.height.equalTo(34)
+        }
+
+        pwTitle.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(362)
+            make.left.equalToSuperview().offset(45)
+        }
+
+        pwField.snp.makeConstraints { make in
+            make.top.equalTo(pwTitle.snp.bottom).offset(10)
+            make.centerX.equalToSuperview()
+            make.width.equalTo(303)
+            make.height.equalTo(34)
+        }
+
+        loginButton.snp.makeConstraints { make in
+            make.top.equalTo(pwField.snp.bottom).offset(17)
+            make.centerX.equalToSuperview()
+            make.width.equalTo(303)
+            make.height.equalTo(38)
+        }
+
+        kakaoLogin.snp.makeConstraints { make in
+            make.top.equalTo(loginButton.snp.bottom).offset(87)
+            make.centerX.equalToSuperview()
+            make.width.equalTo(298)
+            make.height.equalTo(40)
+        }
+
+        appleLogin.snp.makeConstraints { make in
+            make.top.equalTo(kakaoLogin.snp.bottom).offset(17)
+            make.centerX.equalToSuperview()
+            make.width.equalTo(298)
+            make.height.equalTo(40)
+        }
+
 
         
-        NSLayoutConstraint.activate([
-            titleImage.topAnchor.constraint(equalTo: self.topAnchor, constant: 126),
-            titleImage.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            
-            idTitle.topAnchor.constraint(equalTo: titleImage.bottomAnchor, constant: 87),
-            idTitle.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 45),
-            
-            idField.topAnchor.constraint(equalTo: idTitle.bottomAnchor, constant: 10),
-            idField.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            idField.widthAnchor.constraint(equalToConstant: 303),
-            idField.heightAnchor.constraint(equalToConstant: 34),
-            
-            pwTitle.topAnchor.constraint(equalTo: self.topAnchor, constant: 362),
-            pwTitle.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 45),
-            
-            pwField.topAnchor.constraint(equalTo: pwTitle.bottomAnchor, constant: 10),
-            pwField.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            pwField.widthAnchor.constraint(equalToConstant: 303),
-            pwField.heightAnchor.constraint(equalToConstant: 34),
-            
-            loginButton.topAnchor.constraint(equalTo: pwField.bottomAnchor, constant: 17),
-            loginButton.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            loginButton.widthAnchor.constraint(equalToConstant: 303),
-            loginButton.heightAnchor.constraint(equalToConstant: 38),
-            
-            kakaoLogin.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 87),
-            kakaoLogin.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            kakaoLogin.widthAnchor.constraint(equalToConstant: 298),
-            kakaoLogin.heightAnchor.constraint(equalToConstant: 40),
-            
-            appleLogin.topAnchor.constraint(equalTo: kakaoLogin.bottomAnchor, constant: 17),
-            appleLogin.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            appleLogin.widthAnchor.constraint(equalToConstant: 298),
-            appleLogin.heightAnchor.constraint(equalToConstant: 40),
-            
-            
-            
-            
-        ])
+//        NSLayoutConstraint.activate([
+//            titleImage.topAnchor.constraint(equalTo: self.topAnchor, constant: 126),
+//            titleImage.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+//            
+//            idTitle.topAnchor.constraint(equalTo: titleImage.bottomAnchor, constant: 87),
+//            idTitle.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 45),
+//            
+//            idField.topAnchor.constraint(equalTo: idTitle.bottomAnchor, constant: 10),
+//            idField.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+//            idField.widthAnchor.constraint(equalToConstant: 303),
+//            idField.heightAnchor.constraint(equalToConstant: 34),
+//            
+//            pwTitle.topAnchor.constraint(equalTo: self.topAnchor, constant: 362),
+//            pwTitle.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 45),
+//            
+//            pwField.topAnchor.constraint(equalTo: pwTitle.bottomAnchor, constant: 10),
+//            pwField.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+//            pwField.widthAnchor.constraint(equalToConstant: 303),
+//            pwField.heightAnchor.constraint(equalToConstant: 34),
+//            
+//            loginButton.topAnchor.constraint(equalTo: pwField.bottomAnchor, constant: 17),
+//            loginButton.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+//            loginButton.widthAnchor.constraint(equalToConstant: 303),
+//            loginButton.heightAnchor.constraint(equalToConstant: 38),
+//            
+//            kakaoLogin.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 87),
+//            kakaoLogin.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+//            kakaoLogin.widthAnchor.constraint(equalToConstant: 298),
+//            kakaoLogin.heightAnchor.constraint(equalToConstant: 40),
+//            
+//            appleLogin.topAnchor.constraint(equalTo: kakaoLogin.bottomAnchor, constant: 17),
+//            appleLogin.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+//            appleLogin.widthAnchor.constraint(equalToConstant: 298),
+//            appleLogin.heightAnchor.constraint(equalToConstant: 40),
+//            
+//            
+//            
+//            
+//        ])
     }
     
     

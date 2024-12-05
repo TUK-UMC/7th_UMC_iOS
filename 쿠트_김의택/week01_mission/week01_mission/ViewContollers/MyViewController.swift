@@ -12,12 +12,15 @@ import SnapKit
 class MyViewController: UIViewController {
     
     private lazy var myView = MyView()
+    private let userDefaults = LoginModel()
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view = myView
         
         myView.profileSettingBtn.addTarget(self, action: #selector (buttonDidTap), for: .touchUpInside)
+        myView.profileName.text = userDefaults.loadUserID()
         
         
         

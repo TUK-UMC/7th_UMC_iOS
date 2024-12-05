@@ -1,0 +1,11 @@
+//
+//  Config.xcconfig
+//  week01_mission
+//
+//  Created by nelime on 11/16/24.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+API_KEY = 3099164b236c25c6866b01918b61ebd8

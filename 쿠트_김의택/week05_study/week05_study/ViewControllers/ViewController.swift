@@ -1,0 +1,21 @@
+//
+//  ViewController.swift
+//  week05_study
+//
+//  Created by nelime on 11/8/24.
+//
+
+import UIKit
+
+class ViewController: UIViewController {
+    
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.view = RainbowView(frame: self.view.bounds)
+        
+    }
+
+
+}
+
