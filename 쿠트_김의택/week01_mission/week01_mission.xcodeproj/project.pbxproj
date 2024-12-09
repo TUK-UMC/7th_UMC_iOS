@@ -8,10 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		6D90969E2CAF01CE00A5406C /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 6D90969D2CAF01CE00A5406C /* SnapKit */; };
+		6D96F7F92CDBBFD40062D2ED /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 6D96F7F82CDBBFD40062D2ED /* Then */; };
+		6DA23F512CE8A502007EFB30 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 6DA23F502CE8A502007EFB30 /* Alamofire */; };
+		6DA23F5B2CE8A5E7007EFB30 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 6DA23F5A2CE8A5E7007EFB30 /* Config.xcconfig */; };
+		6DA23F5E2CE8B4F8007EFB30 /* KakaoSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 6DA23F5D2CE8B4F8007EFB30 /* KakaoSDK */; };
+		6DA23F602CE8B4F8007EFB30 /* KakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 6DA23F5F2CE8B4F8007EFB30 /* KakaoSDKAuth */; };
+		6DA23F622CE8B4F8007EFB30 /* KakaoSDKCert in Frameworks */ = {isa = PBXBuildFile; productRef = 6DA23F612CE8B4F8007EFB30 /* KakaoSDKCert */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		6D8E656F2CA717690024FEDA /* week01_mission.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = week01_mission.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6DA23F5A2CE8A5E7007EFB30 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -40,7 +47,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6DA23F512CE8A502007EFB30 /* Alamofire in Frameworks */,
+				6DA23F5E2CE8B4F8007EFB30 /* KakaoSDK in Frameworks */,
 				6D90969E2CAF01CE00A5406C /* SnapKit in Frameworks */,
+				6DA23F622CE8B4F8007EFB30 /* KakaoSDKCert in Frameworks */,
+				6D96F7F92CDBBFD40062D2ED /* Then in Frameworks */,
+				6DA23F602CE8B4F8007EFB30 /* KakaoSDKAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -50,6 +62,7 @@
 		6D8E65662CA717690024FEDA = {
 			isa = PBXGroup;
 			children = (
+				6DA23F5A2CE8A5E7007EFB30 /* Config.xcconfig */,
 				6D8E65712CA717690024FEDA /* week01_mission */,
 				6D8E65702CA717690024FEDA /* Products */,
 			);
@@ -84,6 +97,11 @@
 			name = week01_mission;
 			packageProductDependencies = (
 				6D90969D2CAF01CE00A5406C /* SnapKit */,
+				6D96F7F82CDBBFD40062D2ED /* Then */,
+				6DA23F502CE8A502007EFB30 /* Alamofire */,
+				6DA23F5D2CE8B4F8007EFB30 /* KakaoSDK */,
+				6DA23F5F2CE8B4F8007EFB30 /* KakaoSDKAuth */,
+				6DA23F612CE8B4F8007EFB30 /* KakaoSDKCert */,
 			);
 			productName = week01_mission;
 			productReference = 6D8E656F2CA717690024FEDA /* week01_mission.app */;
@@ -115,6 +133,9 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				6D90969C2CAF01CE00A5406C /* XCRemoteSwiftPackageReference "SnapKit" */,
+				6D96F7F72CDBBFD40062D2ED /* XCRemoteSwiftPackageReference "Then" */,
+				6DA23F4F2CE8A502007EFB30 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				6DA23F5C2CE8B4F8007EFB30 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 6D8E65702CA717690024FEDA /* Products */;
@@ -131,6 +152,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6DA23F5B2CE8A5E7007EFB30 /* Config.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,6 +171,7 @@
 /* Begin XCBuildConfiguration section */
 		6D8E65832CA7176A0024FEDA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6DA23F5A2CE8A5E7007EFB30 /* Config.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -352,6 +375,30 @@
 				minimumVersion = 5.7.1;
 			};
 		};
+		6D96F7F72CDBBFD40062D2ED /* XCRemoteSwiftPackageReference "Then" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devxoul/Then";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+		6DA23F4F2CE8A502007EFB30 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.10.1;
+			};
+		};
+		6DA23F5C2CE8B4F8007EFB30 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kakao/kakao-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.23.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -359,6 +406,31 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 6D90969C2CAF01CE00A5406C /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		6D96F7F82CDBBFD40062D2ED /* Then */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6D96F7F72CDBBFD40062D2ED /* XCRemoteSwiftPackageReference "Then" */;
+			productName = Then;
+		};
+		6DA23F502CE8A502007EFB30 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6DA23F4F2CE8A502007EFB30 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		6DA23F5D2CE8B4F8007EFB30 /* KakaoSDK */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6DA23F5C2CE8B4F8007EFB30 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDK;
+		};
+		6DA23F5F2CE8B4F8007EFB30 /* KakaoSDKAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6DA23F5C2CE8B4F8007EFB30 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKAuth;
+		};
+		6DA23F612CE8B4F8007EFB30 /* KakaoSDKCert */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6DA23F5C2CE8B4F8007EFB30 /* XCRemoteSwiftPackageReference "kakao-ios-sdk" */;
+			productName = KakaoSDKCert;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
